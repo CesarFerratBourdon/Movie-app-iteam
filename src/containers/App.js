@@ -9,7 +9,6 @@ import Movies from '../components/Movies.js'
 class App extends Component {
 
   handleChange = title => {
-    console.log("voila");
   this.props.actions.fetchMovies(title)
   }
 

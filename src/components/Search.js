@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 import ActionSearch from 'material-ui/svg-icons/action/search';
@@ -8,35 +8,36 @@ const styles = {
       width: 120,
       height: 120,
       padding: 30,
-    },
+  },
   largeIcon: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 40
+  },
+  search: {
+    width: 350,
+    fontSize: 24
+  },
+  searchBox: {
+  width: 600,
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "auto"
   }
 }
 
-const Search = ({ onChange }) => {
-  let input
-  return (
-    <div>
-      <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        onChange(input.value);
-      }}>
-        <TextField name="input" >
-          <input ref={node => {
-            input = node
-          }} />
-        </TextField>
-        <IconButton type="submit" iconStyle={styles.largeIcon} style={styles.large}>
+
+class Search extends Component {
+
+  render() {
+    return (
+      <div style={styles.searchBox} >
+        <TextField ref="myField" name="input" hintText="What movie are you looking for?" style={styles.search}/>
+        <IconButton onClick={e  => this.props.onChange(this.refs.myField.getValue())} iconStyle={styles.largeIcon} style={styles.large} >
           <ActionSearch />
         </IconButton>
-      </form>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 Search.propTypes = {

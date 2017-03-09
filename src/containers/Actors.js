@@ -25,10 +25,9 @@ class Actors extends Component {
     return this.props.actors.map(actor => {
       return (
         <img
-					className="actor"
           alt=""
           key={actor.id}
-          src={`//image.tmdb.org/t/p/w300/${actor.profile_path}`}>
+          src={`//image.tmdb.org/t/p/w90/${actor.profile_path}`}>
 				</img>)
   	})
 	}
@@ -36,7 +35,7 @@ class Actors extends Component {
   render() {
     return (
       <div>
-        <h1>Main Actors Here</h1>
+        <h3>Main Actors</h3>
 				{this.props.actors ? this.createActorImages() : "loading ..."}
 			</div>
     )
