@@ -36,7 +36,7 @@ export function receiveActors(actors) {
 }
 
 export function fetchMovies(title) {
-  let url = `https://api.themoviedb.org/3/search/movie?api_key=${KEYS.API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
+  let url = `https://api.themoviedb.org/3/search/movie?api_key=${KEYS.API_KEY}&language=en-US&query=${title}&total_pages=3&include_adult=false`
 
   return dispatch => {
     dispatch(requestMovies(url));

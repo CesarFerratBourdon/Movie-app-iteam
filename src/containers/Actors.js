@@ -23,12 +23,15 @@ class Actors extends Component {
 
   createActorImages() {
     return this.props.actors.map(actor => {
-      return (
-        <img
-          alt=""
-          key={actor.id}
-          src={`//image.tmdb.org/t/p/w90/${actor.profile_path}`}>
-				</img>)
+      if (actor.profile_path !== null) {
+        return (
+          <img
+            alt=""
+            key={actor.id}
+            src={`//image.tmdb.org/t/p/w90/${actor.profile_path}`}>
+  				</img>
+        )
+      }
   	})
 	}
 

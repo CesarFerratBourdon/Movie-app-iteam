@@ -19,7 +19,8 @@ class Poster extends Component {
     super(props);
     this.state = {
       showModal: false,
-      expanded: false
+      expanded: false,
+
     };
   }
 
@@ -65,7 +66,7 @@ class Poster extends Component {
       //                           /> : null
       //   }
       // </div>
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange} style={{width: 400}}>
+      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange} style={{float: "left", backgroundColor: "#f6f6f6", width: "20%"}}>
         <CardHeader
           title={this.props.movie.original_title}
           subtitle={year}
@@ -81,21 +82,24 @@ class Poster extends Component {
            label="Toggle more information"
          />
         </CardText>
-        <CardMedia
-          expandable={true}
-          overlay={<CardTitle title={notation} subtitle={voters} />}
-        >
-          <img src={url} />
-        </CardMedia>
-        <CardTitle
-          title={this.props.movie.original_title}
-          subtitle={year}
-          expandable={true}
-        />
-        <CardText expandable={true}>
-          {this.props.movie.overview}
-        </CardText>
-        <Actors id={this.props.movie.id} expandable={true} />
+        <div expandable={true} style={{position: "absolute", zIndex: 50, width: "19.8%"}}>
+            <CardMedia
+              overlay={<CardTitle title={notation} subtitle={voters} />}
+            >
+              <img src={url} />
+            </CardMedia>
+            <CardTitle
+              title={this.props.movie.original_title}
+              subtitle={year}
+            />
+            <CardText>
+              {this.props.movie.overview}
+            </CardText>
+            <Actors
+              id={this.props.movie.id}
+
+            />
+        </div>
       </Card>
     )
 	}
