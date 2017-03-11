@@ -21,17 +21,19 @@ export function receiveMovies(movies) {
   };
 }
 
-export function requestActors(actorsUrl) {
+export function requestActors(actorsUrl, movieId) {
   return {
     type: REQUEST_ACTORS,
-    actorsUrl
+    actorsUrl,
+    movieId
   };
 }
 
-export function receiveActors(actors) {
+export function receiveActors(actors, movieId) {
   return {
     type: RECEIVE_ACTORS,
-    actors
+    actors,
+    movieId
   };
 }
 
@@ -48,15 +50,15 @@ export function fetchMovies(title) {
   };
 }
 
-export function fetchActors(id) {
-  let url = `http://api.themoviedb.org/3/movie/${id}/credits?api_key=${KEYS.API_KEY}`;
-
+export function fetchActors(movieId) {
+  let url = `http://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEYS.API_KEY}`;
+  console.log("fetch");
   return dispatch => {
-    dispatch(requestActors(url));
+    dispatch(requestActors(url, movieId));
       return fetch(url)
                .then(response => response.json())
                .then(json => {
-                 dispatch(receiveActors(json.cast));
+                 dispatch(receiveActors(json.cast, movieId));
              });
   };
 }

@@ -7,46 +7,50 @@ const propTypes = {
   id: PropTypes.number.isRequired
 };
 
-const contextTypes = {
-  store: PropTypes.object
-};
-
 class Actors extends Component {
-  constructor (props, context) {
-    super(props, context);
-  }
 
   componentDidMount() {
     let { id } = this.props;
     this.props.actions.fetchActors(id);
   }
 
+  displayActorPortfolio(id) {
+    // this.props.actions.fetchPortfolio(id);
+  }
+
   createActorImages() {
-    return this.props.actors.map(actor => {
-      if (actor.profile_path !== null) {
+    let movieId = this.props.id.toString();
+    let allActors = this.props.actors
+    let cast = allActors[movieId]
+
+    return cast.map(actor => {
         return (
-          <img
-            alt=""
-            key={actor.id}
-            src={`//image.tmdb.org/t/p/w90/${actor.profile_path}`}>
-  				</img>
+          <a>
+            <img
+              alt=""
+              title={actor.name}
+              key={actor.id}
+              onClick={this.displayActorPortfolio(actor.id)}
+              src={`//image.tmdb.org/t/p/w90/${actor.profile_path}`}>
+    				</img>
+          </a>
         )
       }
-  	})
+  	)
 	}
 
   render() {
+    let movieId = this.props.id.toString();
     return (
       <div>
         <h3>Main Actors</h3>
-				{this.props.actors ? this.createActorImages() : "loading ..."}
+				{Reflect.has(this.props.actors, movieId) ? this.createActorImages() : "loading ..."}
 			</div>
     )
   }
 }
 
 Actors.propTypes = propTypes;
-Actors.contextTypes = contextTypes;
 
 function mapStateToProps(state) {
   const {actors, isLoadingActors} = state.actors;

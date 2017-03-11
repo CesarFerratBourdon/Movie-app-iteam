@@ -5,6 +5,8 @@ const initialState = {
   movies:[]
 };
 
+const noPoster = (movie) => movie.poster_path !== null;
+
 function movies(state = initialState, action) {
   switch (action.type) {
   case REQUEST_MOVIES:
@@ -12,9 +14,10 @@ function movies(state = initialState, action) {
       isLoading: true
     });
   case RECEIVE_MOVIES:
+    const _movies = action.movies.filter(noPoster).slice(0,20)
     return Object.assign({}, state, {
       isLoading: false,
-      movies: action.movies
+      movies: _movies
     });
   default:
     return state;

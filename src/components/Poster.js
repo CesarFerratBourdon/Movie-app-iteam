@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import PosterModal from './PosterModal';
-import {Card, CardActions, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
 import Actors from '../containers/Actors.js';
 
@@ -86,7 +85,7 @@ class Poster extends Component {
             <CardMedia
               overlay={<CardTitle title={notation} subtitle={voters} />}
             >
-              <img src={url} />
+              <img src={url} alt="" />
             </CardMedia>
             <CardTitle
               title={this.props.movie.original_title}
@@ -97,7 +96,6 @@ class Poster extends Component {
             </CardText>
             <Actors
               id={this.props.movie.id}
-
             />
         </div>
       </Card>
