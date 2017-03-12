@@ -2,7 +2,7 @@ import {REQUEST_MOVIES, RECEIVE_MOVIES} from '../actions/index.js';
 
 const initialState = {
   isLoading: false,
-  movies:[]
+  movies: []
 };
 
 const noPoster = (movie) => movie.poster_path !== null;

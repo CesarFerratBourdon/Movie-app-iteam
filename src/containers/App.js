@@ -23,7 +23,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const {movies, isLoading} = state.movies;
+  const {movies, isLoading} = state.movies
   return {
     isLoading,
     movies

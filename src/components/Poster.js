@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import PosterModal from './PosterModal';
 import {Card, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
 import Actors from '../containers/Actors.js';
@@ -39,33 +38,15 @@ class Poster extends Component {
     this.setState({expanded: false});
   };
 
-  open() {
-    this.setState({ showModal: true });
-  }
-
-  close() {
-    this.setState({ showModal: false });
-  }
 
 	render() {
     let url = `//image.tmdb.org/t/p/w500/${this.props.movie.poster_path}`;
     let year = (this.props.movie.release_date).slice(0,4)
     let notation = (this.props.movie.vote_average) + ' /10'
     let voters = (this.props.movie.vote_count) + ' votes'
+
     return (
-      // <div onClick={this.open.bind(this)}>
-      //     <img alt="" src={url}/>
-      //     <p> {this.props.movie.original_title}</p>
-      //     <p><span>{this.props.movie.vote_average}</span>/10
-      //     <span>({this.props.movie.vote_count} votes)</span></p>
-      //   {this.state.showModal ? <PosterModal {...this.props}
-      //                             showModal={this.state.showModal}
-      //                             url={url}
-      //                             handleClose={this.close.bind(this)}
-      //                           /> : null
-      //   }
-      // </div>
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange} style={{float: "left", backgroundColor: "#f6f6f6", width: "20%"}}>
+      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange} style={{float: "left", backgroundColor: "#f6f6f6", width: "25%"}}>
         <CardHeader
           title={this.props.movie.original_title}
           subtitle={year}
@@ -81,7 +62,7 @@ class Poster extends Component {
            label="Toggle more information"
          />
         </CardText>
-        <div expandable={true} style={{position: "absolute", zIndex: 50, width: "19.8%"}}>
+        <div expandable={true} style={{position: "absolute", zIndex: 50, width: "24.8%"}}>
             <CardMedia
               overlay={<CardTitle title={notation} subtitle={voters} />}
             >
