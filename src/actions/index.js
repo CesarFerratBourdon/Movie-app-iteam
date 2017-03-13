@@ -74,7 +74,7 @@ export function fetchMovies(title) {
 }
 
 export function fetchActors(movieId) {
-  let url = `http://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEYS.API_KEY}`;
+  let url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEYS.API_KEY}`;
 
   return dispatch => {
     dispatch(requestActors(url, movieId));
