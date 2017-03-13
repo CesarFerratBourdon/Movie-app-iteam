@@ -1,7 +1,7 @@
 import {REQUEST_PORTFOLIO, RECEIVE_PORTFOLIO, REMOVE_PORTFOLIO} from '../actions/index.js';
 
 const initialState = {
-  isLoadingPortfolio: false,
+  isLoadingPortfolio: true,
   portfolio: []
 };
 

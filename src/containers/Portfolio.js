@@ -8,23 +8,34 @@ const propTypes = {
     actorId: PropTypes.number.isRequired,
 };
 
-
 class Portfolio extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      loading: true,
+    };
+  }
 
-  componentDidMount() {
+  componentWillMount() {
     let actorId  = this.props.actorId;
     this.props.actions.fetchActorPortfolio(actorId);
-
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.isLoadingPortfolio !== this.props.isLoadingPortfolio) {
+  //     console.log("tracking")
+  //     this.createPortfolioImages();
+  //   }
+  // }
 
   componentWillUnmount() {
     this.props.actions.cleanPortfolio();
   }
 
   createPortfolioImages() {
-    let mainMovies = this.props.portfolio
+    let recentMovies = this.props.portfolio
 
-    return mainMovies.map(movie => {
+    return recentMovies.map(movie => {
         return (
             <img
               alt=""
@@ -43,9 +54,52 @@ class Portfolio extends Component {
         {this.props.portfolio.length !== 0 ? this.createPortfolioImages() : <CircularProgress size={60} thickness={7} />}
       </div>
     );
-
-
   }
+//   preloadImages(srcs) {
+//     console.log("voila")
+//     console.log(srcs)
+//     function loadImage(src) {
+//         return new Promise(function(resolve, reject) {
+//             var img = new Image();
+//             img.onload = function() {
+//                 resolve(img);
+//             };
+//             img.onabort = function() {
+//                 reject(src);
+//             };
+//             img.src = src;
+//         });
+//     }
+//     var promises = [];
+//     for (var i = 0; i < srcs.length; i++) {
+//         console.log(i);
+//         promises.push(loadImage(srcs[i]));
+//     }
+//     return Promise.all(promises);
+// }
+//
+//   createPortfolioImages() {
+//     let recentMovies = this.props.portfolio
+//     let srcs = recentMovies.map(movie => `//image.tmdb.org/t/p/w154${movie.poster_path}`)
+//     this.preloadImages(srcs)
+//             .then(function(images){
+//               console.log(images)
+//               this.setState({loading: false, allImages: images});
+//             })
+//   }
+//
+//   renderImages() {
+//     return this.state.allImages.forEach(image => image)
+//   }
+//
+//
+//   render(){
+//     return (
+//       <div>
+//         {this.state.loading === true ? <CircularProgress size={60} thickness={7}/> : this.renderImages() }
+//       </div>
+//     );
+//   }
 }
 
 Portfolio.propTypes = propTypes;
