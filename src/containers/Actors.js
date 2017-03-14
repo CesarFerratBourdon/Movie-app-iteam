@@ -72,7 +72,7 @@ class Actors extends Component {
         <h3>Main Actors</h3>
 				{Reflect.has(this.props.actors, movieId) ? this.createActorImages() : <CircularProgress size={60} thickness={7} />}
         <Dialog
-          title={"Most recent movies with " + this.state.actorName}
+          title={this.state.actorName + ": Biography & Most popular movies"}
           modal={true}
           contentStyle={customContentStyle}
           actions={actions}

@@ -8,6 +8,9 @@ export const RECEIVE_ACTORS = 'RECEIVE_ACTORS';
 export const REQUEST_PORTFOLIO = 'REQUEST_PORTFOLIO';
 export const RECEIVE_PORTFOLIO = 'RECEIVE_PORTFOLIO';
 export const REMOVE_PORTFOLIO = 'REMOVE_PORTFOLIO';
+export const REQUEST_ACTOR_DETAILS = 'REQUEST_ACTOR_DETAILS';
+export const RECEIVE_ACTOR_DETAILS = 'RECEIVE_ACTOR_DETAILS';
+export const REMOVE_ACTOR_DETAILS = 'REMOVE_ACTOR_DETAILS';
 
 
 export function requestMovies(moviesUrl) {
@@ -60,6 +63,26 @@ export function removePortfolio() {
   };
 }
 
+export function requestActorDetails(detailsUrl) {
+  return {
+    type: REQUEST_ACTOR_DETAILS,
+    detailsUrl
+  };
+}
+
+export function receiveActorDetails(details) {
+  return {
+    type: RECEIVE_ACTOR_DETAILS,
+    details
+  };
+}
+
+export function removeActorDetails() {
+  return {
+    type: REMOVE_ACTOR_DETAILS
+  };
+}
+
 export function fetchMovies(title) {
   let url = `https://api.themoviedb.org/3/search/movie?api_key=${KEYS.API_KEY}&language=en-US&query=${title}&total_pages=3&include_adult=false`
 
@@ -101,6 +124,23 @@ export function fetchActorPortfolio(actorId) {
   };
 }
 
+export function fetchActorDetails(actorId) {
+  let url = `https://api.themoviedb.org/3/person/${actorId}?api_key=${KEYS.API_KEY}`
+
+  return dispatch => {
+    dispatch(requestActorDetails(url));
+      return fetch(url)
+               .then(response => response.json())
+               .then(json => {
+                 dispatch(receiveActorDetails(json));
+             });
+  };
+}
+
 export function cleanPortfolio() {
   return dispatch => dispatch(removePortfolio());
+}
+
+export function cleanActorDetails() {
+  return dispatch => dispatch(removeActorDetails());
 }

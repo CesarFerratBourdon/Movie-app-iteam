@@ -19,6 +19,7 @@ class Portfolio extends Component {
   componentWillMount() {
     let actorId  = this.props.actorId;
     this.props.actions.fetchActorPortfolio(actorId);
+    this.props.actions.fetchActorDetails(actorId);
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -30,6 +31,18 @@ class Portfolio extends Component {
 
   componentWillUnmount() {
     this.props.actions.cleanPortfolio();
+    this.props.actions.cleanActorDetails();
+  }
+
+  createBiography() {
+    if (this.props.details.biography !== null) {
+      let biography = this.props.details.biography.split(".").slice(0,4)
+        return (
+          <div>
+            {biography}
+          </div>
+        )
+    }
   }
 
   createPortfolioImages() {
@@ -51,7 +64,10 @@ class Portfolio extends Component {
   render(){
     return (
       <div>
-        {this.props.portfolio.length !== 0 ? this.createPortfolioImages() : <CircularProgress size={60} thickness={7} />}
+        <span>
+          {this.props.details.length !== 0 ? this.createBiography() : ""}
+        </span><br></br>
+          {this.props.portfolio.length !== 0 ? this.createPortfolioImages() : <CircularProgress size={60} thickness={7} />}
       </div>
     );
   }
@@ -107,9 +123,12 @@ Portfolio.propTypes = propTypes;
 
 function mapStateToProps(state) {
   const { portfolio, isLoadingPortfolio } = state.portfolio
+  const { details, isLoadingActorDetails } = state.actorDetails
   return {
     isLoadingPortfolio,
-    portfolio
+    portfolio,
+    isLoadingActorDetails,
+    details
   }
 }
 
