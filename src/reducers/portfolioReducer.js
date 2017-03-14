@@ -5,12 +5,7 @@ const initialState = {
   portfolio: []
 };
 
-const mostRecent = (a, b) => b.release_date.substr(0,4) - a.release_date.substr(0,4);
-
-const noReleaseDate = (movie) => movie.release_date !== null;
-
 const noPicture = (movie) => movie.poster_path !== null;
-
 
 function portfolio(state = initialState, action) {
   switch (action.type) {
@@ -19,9 +14,7 @@ function portfolio(state = initialState, action) {
       isLoadingPortfolio: true
     });
   case RECEIVE_PORTFOLIO:
-    const orderedMovies = action.portfolio.filter(noReleaseDate).sort(mostRecent)
-    const _portfolio = orderedMovies.filter(noPicture).slice(0,10)
-
+    const _portfolio = action.portfolio.filter(noPicture).slice(0,10)
     return Object.assign({}, state, {
       isLoadingPortfolio: false,
       portfolio: _portfolio

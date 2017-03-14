@@ -40,7 +40,8 @@ class Poster extends Component {
 
 
 	render() {
-    let url = `//image.tmdb.org/t/p/w500/${this.props.movie.poster_path}`;
+    let urlThumbnail = `//image.tmdb.org/t/p/w90${this.props.movie.poster_path}`;
+    let url = `//image.tmdb.org/t/p/w500${this.props.movie.poster_path}`;
     let year = (this.props.movie.release_date).slice(0,4)
     let notation = (this.props.movie.vote_average) + ' /10'
     let voters = (this.props.movie.vote_count) + ' votes'
@@ -50,7 +51,7 @@ class Poster extends Component {
         <CardHeader
           title={this.props.movie.original_title}
           subtitle={year}
-          avatar={url}
+          avatar={urlThumbnail}
           actAsExpander={true}
           showExpandableButton={true}
         />

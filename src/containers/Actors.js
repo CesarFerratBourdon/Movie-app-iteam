@@ -45,7 +45,7 @@ class Actors extends Component {
     return cast.map(actor => {
         return (
           <img
-            style={{cursor: "pointer"}}
+            style={{cursor: "pointer", width: "20%"}}
             alt=""
             title={actor.name}
             key={actor.id}

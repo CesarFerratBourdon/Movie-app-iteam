@@ -41,7 +41,7 @@ class Portfolio extends Component {
               alt=""
               title={movie.original_title}
               key={movie.id}
-              src={`//image.tmdb.org/t/p/w154/${movie.poster_path}`}>
+              src={`//image.tmdb.org/t/p/w154${movie.poster_path}`}>
     				</img>
         )
       }
@@ -55,6 +55,7 @@ class Portfolio extends Component {
       </div>
     );
   }
+  // IMAGE PRELOADER with Promises. This is a cosmetic UX improvement I am working on:
 //   preloadImages(srcs) {
 //     console.log("voila")
 //     console.log(srcs)

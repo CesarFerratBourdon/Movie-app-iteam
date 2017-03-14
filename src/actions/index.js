@@ -87,14 +87,16 @@ export function fetchActors(movieId) {
 }
 
 export function fetchActorPortfolio(actorId) {
-  let url = `https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${KEYS.API_KEY}&language=en-US`
+  let url = `https://api.themoviedb.org/3/discover/movie?api_key=${KEYS.API_KEY}`
+              + `&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
+
 
   return dispatch => {
     dispatch(requestPortfolio(url));
       return fetch(url)
                .then(response => response.json())
                .then(json => {
-                 dispatch(receivePortfolio(json.cast));
+                 dispatch(receivePortfolio(json.results));
              });
   };
 }
