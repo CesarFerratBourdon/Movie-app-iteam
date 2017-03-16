@@ -1,4 +1,4 @@
-import {REQUEST_ACTOR_DETAILS, RECEIVE_ACTOR_DETAILS, REMOVE_ACTOR_DETAILS} from '../actions/index.js';
+import {REQUEST_ACTOR_DETAILS, RECEIVE_ACTOR_DETAILS, REMOVE_ACTOR_DETAILS} from '../actions/actions.js';
 
 const initialState = {
   isLoadingActorDetails: false,

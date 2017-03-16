@@ -7,7 +7,7 @@ const loggerMiddleware = createLogger();
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware, // lets us dispatch() functions
-  loggerMiddleware // neat middleware that logs actions
+  loggerMiddleware // middleware that logs actions
 )(createStore);
 
 

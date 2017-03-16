@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actorActions from '../actions/index.js';
+import * as actorActions from '../actions/actions.js';
 import CircularProgress from 'material-ui/CircularProgress';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -16,7 +16,7 @@ const customContentStyle = {
   maxWidth: 'none',
 };
 
-class Actors extends Component {
+export class Actors extends Component {
   constructor (props) {
     super(props);
     this.state = {

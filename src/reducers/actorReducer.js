@@ -1,4 +1,4 @@
-import {REQUEST_ACTORS, RECEIVE_ACTORS} from '../actions/index.js';
+import {REQUEST_ACTORS, RECEIVE_ACTORS} from '../actions/actions.js';
 
 const initialState = {
   isLoadingActors: false,

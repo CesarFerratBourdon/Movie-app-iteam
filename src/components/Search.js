@@ -25,19 +25,24 @@ const styles = {
   }
 }
 
-
 class Search extends Component {
 
-  render() {
-    return (
-      <div style={styles.searchBox} >
-        <TextField ref="myField" name="input" hintText="What movie are you looking for?" style={styles.search}/>
-        <IconButton onClick={e  => this.props.onChange(this.refs.myField.getValue())} iconStyle={styles.largeIcon} style={styles.large} >
-          <ActionSearch />
-        </IconButton>
-      </div>
-    )
+  handleInput(e) {
+    e.preventDefault();
+    let input = this.refs.myField.getValue();
+    this.props.onChange(input)
   }
+
+ render() {
+   return (
+     <form onSubmit={e => this.handleInput(e)} action="" className="form" style={styles.searchBox} >
+       <TextField ref="myField" name="input" hintText="What movie are you looking for?" style={styles.search}/>
+       <IconButton onClick={e  => this.handleInput(e)} iconStyle={styles.largeIcon} style={styles.large} >
+         <ActionSearch />
+       </IconButton>
+     </form>
+   )
+ }
 }
 
 Search.propTypes = {

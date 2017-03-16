@@ -1,4 +1,4 @@
-import {REQUEST_MOVIES, RECEIVE_MOVIES} from '../actions/index.js';
+import {REQUEST_MOVIES, RECEIVE_MOVIES} from '../actions/actions.js';
 
 const initialState = {
   isLoading: false,

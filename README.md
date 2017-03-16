@@ -47,7 +47,7 @@ Launches the test runner in the interactive watch mode.<br>
 Finish working on Promise for image preloader. When opening Modal, the spinner should be spinning until all pictures have triggered their onload event to have a clean display effect.
 
 ## 2
-Take care of onSubmit when user write an input and push enter instead of clicking the search button
+Open an alert when no results returned by API call
 
 ## 3
 Add a fadeIn effect on movie detail toggle

@@ -1,14 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as portfolioActions from '../actions/index.js';
+import * as portfolioActions from '../actions/actions.js';
 import CircularProgress from 'material-ui/CircularProgress';
 
 const propTypes = {
     actorId: PropTypes.number.isRequired,
 };
 
-class Portfolio extends Component {
+export class Portfolio extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -21,13 +21,6 @@ class Portfolio extends Component {
     this.props.actions.fetchActorPortfolio(actorId);
     this.props.actions.fetchActorDetails(actorId);
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.isLoadingPortfolio !== this.props.isLoadingPortfolio) {
-  //     console.log("tracking")
-  //     this.createPortfolioImages();
-  //   }
-  // }
 
   componentWillUnmount() {
     this.props.actions.cleanPortfolio();
@@ -72,6 +65,14 @@ class Portfolio extends Component {
     );
   }
   // IMAGE PRELOADER with Promises. This is a cosmetic UX improvement I am working on:
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.isLoadingPortfolio !== this.props.isLoadingPortfolio) {
+  //     console.log("tracking")
+  //     this.createPortfolioImages();
+  //   }
+  // }
+
 //   preloadImages(srcs) {
 //     console.log("voila")
 //     console.log(srcs)

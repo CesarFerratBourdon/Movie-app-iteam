@@ -1,4 +1,4 @@
-import {REQUEST_PORTFOLIO, RECEIVE_PORTFOLIO, REMOVE_PORTFOLIO} from '../actions/index.js';
+import {REQUEST_PORTFOLIO, RECEIVE_PORTFOLIO, REMOVE_PORTFOLIO} from '../actions/actions.js';
 
 const initialState = {
   isLoadingPortfolio: true,

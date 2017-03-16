@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import * as movieActions from '../actions/index.js';
+import * as movieActions from '../actions/actions.js';
 import {bindActionCreators} from 'redux';
 import Search from '../components/Search.js'
 import Movies from '../components/Movies.js'
 
 
-class App extends Component {
+export class App extends Component {
 
   handleChange = title => {
   this.props.actions.fetchMovies(title)
