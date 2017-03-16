@@ -27,6 +27,7 @@ describe('components', () => {
       expect(textfieldProps.hintText).toEqual('What movie are you looking for?')
     })
 
+// Working on it
     // it('should call onChange if length of input is greater than 0', () => {
     //   const { enzymeWrapper, props } = setup()
     //   const button = enzymeWrapper.find('IconButton').props()
